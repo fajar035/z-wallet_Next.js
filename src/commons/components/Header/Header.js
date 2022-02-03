@@ -5,7 +5,8 @@ import Private from "./Private";
 function Header(props) {
   console.log("LOGIN", props);
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light ps-lg-5 pe-lg-5">
+    <nav
+      className={`navbar navbar-expand-lg navbar-light bg-light ps-lg-5 pe-lg-5 ${styles["wrapper-navbar"]}`}>
       <div className="container-fluid">
         <a className={`navbar-brand ${styles.title}`} href="#">
           Zwallet
