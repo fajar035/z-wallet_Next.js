@@ -1,7 +1,118 @@
+.title {
+  font-family: Nunito Sans !important;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 29px;
+  line-height: 40px;
+  color: #6379f4 !important;
+}
+
+.wrapper-button {
+  height: 70px;
+  width: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
 .btn-login {
   background: #ffffff;
   border: 2px solid #6379f4;
   box-sizing: border-box;
   box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
   border-radius: 12px;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #6379f4;
+  width: 120px;
+  height: 48px;
+}
+
+.btn-signup {
+  width: 120px;
+  height: 48px;
+  background: #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+
+.img-profile {
+  border-radius: 10px;
+}
+
+.wrapper-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 31px;
+  color: #3a3d42;
+  margin-bottom: 0;
+}
+
+.phone {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 24px;
+  color: rgba(58, 61, 66, 0.9);
+  margin-bottom: 0;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width: 768px) {
+  .wrapper-button {
+    /* margin-top: 40px; */
+    width: 100%;
+  }
+
+  .btn-login,
+  .btn-signup {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+
+  .wrapper-info {
+    height: 70px;
+    align-items: center;
+    /* border: 1px solid black; */
+  }
+
+  .name,
+  .phone {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .wrapper-button {
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  .btn-login,
+  .btn-signup {
+    height: 50px;
+    margin-bottom: 15px;
+  }
 }
