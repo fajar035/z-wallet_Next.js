@@ -23,7 +23,7 @@ import people from "../commons/assets/images/people.png";
 export default function Home() {
   const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
-    setIsLogin(true);
+    setIsLogin(false);
   }, []);
   return (
     <div className={`container-fluid p-0 ${styles.main}`}>

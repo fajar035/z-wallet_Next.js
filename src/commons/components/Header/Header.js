@@ -28,9 +28,3 @@ function Header(props) {
 }
 
 export default Header;
-{
-  /* <div className={`navbar-nav ${styles["wrapper-button"]}`}>
-  <button className={`nav-item ${styles["btn-login"]}`}>Login</button>
-  <button className={styles["btn-signup"]}>Sign Up</button>
-</div>; */
-}
