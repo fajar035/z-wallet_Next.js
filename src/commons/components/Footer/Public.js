@@ -1,6 +1,6 @@
-import styles from "../styles/Footer.module.css";
+import styles from "../../styles/Footer.module.css"
 
-function Footer() {
+const Public = (props) => {
   return (
     <footer className="row p-lg-5 bg-primary">
       <div className="col-lg-12 border-bottom mb-lg-4">
@@ -25,6 +25,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+};
 
-export default Footer;
+export default Public;

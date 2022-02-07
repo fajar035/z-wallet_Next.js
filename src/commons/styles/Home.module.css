@@ -1,235 +1,143 @@
-.main {
-  background-color: #e5e5e5;
+.main-home {
+  padding: 0 100px;
+  margin-bottom: 120px;
 }
 
-.btn-try-it {
-  background: #6379f4;
-  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
-  border-radius: 12px;
-  height: 57px;
-  width: 173px;
+.wrapper-menu {
+  height: 740px;
+  margin: 0 auto;
+  padding: 20px;
+  /* border: 1px solid black; */
+}
+
+.menu {
   border: none;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+  padding: 40px 0;
+}
+
+.menu-item {
+  margin-bottom: 30px;
+  padding: 5px 20px;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 31px;
+  color: rgba(58, 61, 66, 0.8);
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  color: blue;
+}
+
+.active-link {
+  margin-bottom: 30px;
+  padding: 5px 20px;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 31px;
+  color: blue;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.btn-transfer {
+  background: rgba(255, 255, 255, 0.2);
+  height: 50px;
+  width: 160px;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 10px;
   font-family: Nunito Sans;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 25px;
-  text-align: center;
   color: #ffffff;
-  margin-bottom: 30px;
+  margin: 20px 0;
+}
+
+.icon-btn {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 .title {
   font-family: Nunito Sans;
   font-style: normal;
-  font-weight: 800;
-  font-size: 60px;
-  line-height: 93px;
-  color: #3a3d42;
-  margin-bottom: 30px;
-}
-
-.time {
-  color: rgb(99, 120, 243);
-}
-
-.wrapper-description {
-  width: 74%;
-  margin-bottom: 30px;
-}
-
-.description {
-  font-family: Nunito Sans;
-  font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 31px;
-  color: #3a3d42;
+  color: #e0e0e0;
 }
 
-.wrapper-logo-platform {
-  height: 30px;
-  width: 80px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.wrapper-img-platform {
-  display: flex;
-  justify-content: space-around;
-  padding: 80px;
-  background: rgba(71, 58, 209, 0.06);
-  margin-bottom: 100px;
-}
-
-.title-about {
-  color: #3a3d42;
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 60px;
-  line-height: 93px;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.about {
-  color: #6379f4;
-}
-
-.wrapper-description-about {
-  width: 38%;
-  margin: 30px auto;
-}
-
-.description-about {
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 31px;
-  text-align: center;
-  color: #3a3d42;
-}
-
-.wrapper-card-about {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-
-  padding: 100px;
-}
-
-.card {
-  box-shadow: 0px 4px 250px rgba(255, 255, 255, 0.15);
-  border-radius: 25px;
-  height: 260px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.card-white {
-  background-color: #fff;
-  box-shadow: 0px 4px 250px rgba(255, 255, 255, 0.15);
-  border-radius: 25px;
-  height: 260px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.title-card {
+.price {
   font-family: Nunito Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 31px;
+  font-size: 40px;
+  line-height: 55px;
+  color: #ffffff;
+}
+
+.wrapper-deposite {
+  padding: 20px;
+}
+
+.deposite {
+  background: #6379f4;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 20px;
+}
+
+.main-wrapper-btn {
+  padding: 20px;
+  background: #6379f4;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.wrapper-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapper-title > p {
+  margin: auto 0px;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
   color: #3a3d42;
 }
 
-.description-card {
+.link-seeall {
   font-family: Nunito Sans;
   font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 31px;
-  color: rgba(58, 61, 66, 0.9);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #6379f4;
 }
 
-.card2 {
-  padding: 10px;
+.wrapper-history {
   background: #ffffff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   border-radius: 25px;
-  margin-bottom: 20px;
-}
-
-.title2 {
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 55px;
-  line-height: 60px;
-  color: #3a3d42;
-  margin-bottom: 30px;
-}
-
-.title-card2 {
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 31px;
-  color: #3a3d42;
-}
-
-.title-card2 > span {
-  color: #6379f4;
-}
-
-.description-card2 {
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 31px;
-  color: rgba(58, 61, 66, 0.9);
-}
-
-.card-comment {
-  padding: 30px;
-  background: #ffffff;
-  box-shadow: 0px 5px 70px rgba(197, 197, 197, 0.15);
-  border-radius: 30px;
-  text-align: center;
-}
-
-.img-user-comment {
-  border-radius: 15px !important;
-  -webkit-border-radius: 15px !important;
-  -moz-border-radius: 15px !important;
-  -ms-border-radius: 15px !important;
-  -o-border-radius: 15px !important;
-}
-
-.name-comment {
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 26px;
-  line-height: 40px;
-  color: #373c46;
-}
-
-.profession-comment {
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 33px;
-  color: #56585b;
-}
-
-.comment {
-  font-family: Nunito Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 33px;
-  color: #676a71;
-}
-
-/* RESPONSIVE */
-@media only screen and (max-width: 1024px) {
-  .card {
-    width: 244px;
-    height: 266px;
-  }
+  padding: 20px;
 }

@@ -1,0 +1,32 @@
+.wrapper-card {
+  background-color: white;
+  margin-top: 30px;
+  width: 100%;
+  /* border: 1px solid black; */
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.img-user {
+  border-radius: 10px;
+}
+
+.name {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 0;
+  color: #4d4b57;
+}
+
+.status {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 0;
+  color: #7a7886;
+}
