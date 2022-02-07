@@ -1,10 +1,11 @@
 .main-home {
-  padding: 0 100px;
-  margin-bottom: 120px;
+  padding: 30px 100px;
+  margin-bottom: 0px;
+  background-color: #e5e5e5;
 }
 
 .wrapper-menu {
-  height: 740px;
+  /* height: 740px; */
   margin: 0 auto;
   padding: 20px;
   /* border: 1px solid black; */
@@ -139,5 +140,13 @@
   background: #ffffff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   border-radius: 25px;
+  padding: 20px;
+}
+
+.wrapper-chart {
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+  height: 100%;
   padding: 20px;
 }

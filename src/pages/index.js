@@ -31,7 +31,6 @@ export default function Home(pageTitle) {
 
   return (
     <>
-  
       <Layout title="Zwallet | Landing Page">
         <div className={`container-fluid p-0 ${styles.main}`}>
           <nav
@@ -74,6 +73,7 @@ export default function Home(pageTitle) {
               </div>
             </div>
           </nav>
+
           <main className="container-fluid p-0">
             <section className="row mb-lg-5">
               <div className="col-lg-6 d-flex justify-content-center">

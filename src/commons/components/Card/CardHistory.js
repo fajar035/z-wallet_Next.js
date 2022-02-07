@@ -7,13 +7,13 @@ function CardHistory() {
     <div className={`row ${styles["wrapper-card"]}`}>
       <div className={`col-lg-8 `}>
         <div className="row ">
-          <div className="col-lg-4 p-2">
+          <div className="col-lg-4 p-2 d-flex justify-content-center">
             <Image
               src={photoDefault}
               alt="photo user"
               className={styles["img-user"]}
-              width={200}
-              height={200}
+              width={90}
+              height={90}
             />
           </div>
           <div className="col-lg-8 d-flex flex-column  justify-content-around">
