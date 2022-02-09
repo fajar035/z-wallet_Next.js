@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import TransferDetail from "src/commons/components/TransferDetail";
+import TransferDetail2 from "src/commons/components/TransferDetail";
 
 function TransferDetail() {
   const router = useRouter();
   console.log(router);
-  return <TransferDetail />;
+  return <TransferDetail2 />;
 }
 
 export default TransferDetail;

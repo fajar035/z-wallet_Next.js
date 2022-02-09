@@ -6,11 +6,11 @@ import { useState, useEffect } from "react";
 import styles from "src/commons/styles/transfer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import CardHistory from "src/commons/components/Card/CardHistory";
+// import CardHistory from "src/commons/components/Card/CardHistory";
 import parseCookies from "src/commons/helpers";
 import getUser from "src/modules/user";
 import Loading from "src/commons/components/Loading";
-import Link from "next/link";
+// import Link from "next/link";
 
 function Transfer(props) {
   const [isLogin, setIsLogin] = useState(false);
