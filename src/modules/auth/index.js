@@ -11,4 +11,4 @@ const logoutApi = (config) => {
   return axios.post(url, config);
 };
 
-export default { loginApi, logoutApi };
+export default loginApi;
