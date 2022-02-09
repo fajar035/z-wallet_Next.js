@@ -6,7 +6,7 @@ import FormInputEmail from "src/commons/components/Auth/FormInputEmail";
 import FormInputNewPassword from "src/commons/components/Auth/FormInputNewPassword";
 // import { useState, useEffect } from "react";
 
-function forgot() {
+function Forgot() {
   // const [emailInput, setEmailInput] = useState("");
 
   // useEffect(() => {
@@ -43,4 +43,4 @@ function forgot() {
   );
 }
 
-export default forgot;
+export default Forgot;

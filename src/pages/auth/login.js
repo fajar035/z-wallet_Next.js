@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 
-function login() {
+function Login() {
   const { register, handleSubmit, errors } = useForm();
   const [cookie, setCookie] = useCookies(["user"]);
   const router = useRouter();
@@ -112,4 +112,4 @@ function login() {
 //   };
 // };
 
-export default login;
+export default Login;

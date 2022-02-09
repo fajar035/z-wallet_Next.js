@@ -7,7 +7,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../../commons/components/Layout";
 
-function signup() {
+function Signup() {
   const submitSignup = (e) => {
     e.preventDefault();
     const body = {
@@ -110,4 +110,4 @@ function signup() {
   );
 }
 
-export default signup;
+export default Signup;
