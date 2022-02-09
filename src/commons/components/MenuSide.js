@@ -15,24 +15,6 @@ import { useEffect } from "react";
 function MenuSide(props) {
   const [removeCookie] = useCookies(["user"]);
   console.log("PROPS-MENU", props);
-  const token = props.user.token;
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
-  const logout = () => {
-    logoutApi(config)
-      .then((res) => {
-        console.log(res);
-        console.log("KLIK BERHASIL");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    // logout();
-  }, []);
 
   const deleteCookie = () => {
     removeCookie("user");
