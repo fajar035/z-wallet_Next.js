@@ -1,18 +1,33 @@
 import Link from "next/link";
-import ColumnLeft from "../../commons/components/Auth/columnLeft";
-import styles from "../../commons/styles/Login.module.css";
+import ColumnLeft from "src/commons/components/Auth/columnLeft";
+import styles from "src/commons/styles/Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import Layout from "../../commons/components/Layout";
-import loginApi from "../../modules/auth";
-import { useState, useEffect } from "react";
+import Layout from "src/commons/components/Layout";
+import loginApi from "src/modules/auth";
+// import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 
 function login() {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data, errors);
-
+  const [cookie, setCookie] = useCookies(["user"]);
+  const router = useRouter();
+  const onSubmit = (data) => {
+    loginApi(data)
+      .then((res) => {
+        const resData = res.data.data;
+        setCookie("user", JSON.stringify(resData));
+        router.push("/home");
+        console.log(resData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  console.log(cookie);
   return (
     <Layout title="Zwallet | Login">
       <div className="container-fluid p-0">
@@ -42,6 +57,7 @@ function login() {
                     {...register("email")}
                     placeholder="Enter your e-mail"
                     className={`${styles["input"]}`}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -62,7 +78,7 @@ function login() {
                   <p className={`${styles["forgot"]}`}>Forgot password?</p>
                 </Link>
                 <span className={`${styles["error-input"]}`}>
-                  {console.log(errors)}
+                  {/* {console.log(errors)} */}
                 </span>
                 <button type="submit" className={`${styles["btn-login"]}`}>
                   Login

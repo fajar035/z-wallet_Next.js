@@ -21,8 +21,8 @@ import microsoft from "../commons/assets/images/microsoft.png";
 import transaction from "../commons/assets/images/example-transaction.png";
 import people from "../commons/assets/images/people.png";
 
-export default function Home(pageTitle) {
-  console.log("PROPS", pageTitle);
+export default function Home(props) {
+  console.log("PROPS", props);
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {

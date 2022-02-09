@@ -2,9 +2,13 @@ import styles from "src/commons/styles/Header.module.css";
 import Image from "next/image";
 import pictDefault from "src/commons/assets/images/photo-profile-default.webp";
 import notif from "src/commons/assets/icons/notification.png";
+import { useState, useEffect } from "react";
+import getUser from "src/modules/user";
 
 function Header(props) {
-  console.log("LOGIN", props);
+  const host = process.env.NEXT_PUBLIC_HOST;
+  const photoUser = host + "/uploads/" + props.user.image;
+
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-light ps-lg-5 pe-lg-5 ${styles["wrapper-navbar"]}`}>
@@ -29,7 +33,7 @@ function Header(props) {
             <li
               className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-button"]}`}>
               <Image
-                src={pictDefault}
+                src={photoUser}
                 alt="photo-profile"
                 width={50}
                 height={50}
@@ -38,8 +42,11 @@ function Header(props) {
             </li>
             <li
               className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-info"]}`}>
-              <p className={styles.name}>Fajar Pratama</p>
-              <p className={styles.phone}>+62 8218718079</p>
+              <p
+                className={
+                  styles.name
+                }>{`${props.user.firstName} ${props.user.lastName}`}</p>
+              <p className={styles.phone}>{props.user.noTelp}</p>
             </li>
             <li
               className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-button"]}`}>

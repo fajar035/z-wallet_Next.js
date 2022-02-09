@@ -10,7 +10,7 @@ import getUser from "src/modules/user";
 import getHistoryTransaction from "src/modules/history";
 import Loading from "src/commons/components/Loading";
 
-function History(props) {
+function TopUp(props) {
   const [isLogin, setIsLogin] = useState(false);
   const [dataUser, setDataUser] = useState({});
   const [dataHistory, setDataHistory] = useState([]);
@@ -56,7 +56,7 @@ function History(props) {
       {dataHistory.length == 0 ? (
         <Loading />
       ) : (
-        <Layout title="Zwallet | History">
+        <Layout title="Zwallet | Top Up">
           <div className={`container-fluid p-0 ${styles.main}`}>
             <Header user={dataUser} />
 
@@ -67,29 +67,7 @@ function History(props) {
                   <div className={styles.history}>
                     <div className="row">
                       <div className="col-lg-12 d-flex justify-content-between align-items-center">
-                        <p className="m-0 p-2">Transaction History</p>
-
-                        <select
-                          className={`${styles.filter} dropdown-toggle p-2 ms-3`}
-                          // value={this.state.selectValue}
-                          // onChange={this.handleDropdownChange}
-                          name="filter">
-                          <option value="">-- Select Filter --</option>
-                          <option value="WEEK">Week</option>
-                          <option value="MONTH">Month</option>
-                          <option value="YEAR">Year</option>
-                        </select>
-                      </div>
-                      <div className={styles["wrapper-card"]}>
-                        {Array.isArray(dataHistory) &&
-                          dataHistory.length > 0 &&
-                          dataHistory.map((data, index) => {
-                            return <Card history={data} key={index} />;
-                          })}
-                        {/* <Card />
-                      <Card />
-                      <Card />
-                      <Card /> */}
+                        <p className="m-0 p-2">Top Up</p>
                       </div>
                     </div>
                   </div>
@@ -105,7 +83,7 @@ function History(props) {
   );
 }
 
-History.getInitialProps = async ({ req, res }) => {
+TopUp.getInitialProps = async ({ req, res }) => {
   const data = parseCookies(req);
   // console.log(req);
   if (res) {
@@ -120,4 +98,4 @@ History.getInitialProps = async ({ req, res }) => {
   };
 };
 
-export default History;
+export default TopUp;

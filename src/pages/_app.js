@@ -3,11 +3,15 @@ import Head from "next/head";
 import Script from "next/script";
 // import { Provider } from "react-redux";
 // import store from "../redux/store";
+import { CookiesProvider } from "react-cookie";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Component {...pageProps} />
+      <CookiesProvider>
+        <Component {...pageProps} />
+      </CookiesProvider>
+
       {/* <Provider store={store}></Provider> */}
       <Script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

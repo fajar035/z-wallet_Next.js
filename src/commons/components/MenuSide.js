@@ -8,8 +8,36 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
+import { useCookies } from "react-cookie";
+import { logoutApi } from "src/modules/auth";
+import { useEffect } from "react";
 
-function MenuSide() {
+function MenuSide(props) {
+  const [removeCookie] = useCookies(["user"]);
+  console.log("PROPS-MENU", props);
+  const token = props.user.token;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+  const logout = () => {
+    logoutApi(config)
+      .then((res) => {
+        console.log(res);
+        console.log("KLIK BERHASIL");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    // logout();
+  }, []);
+
+  const deleteCookie = () => {
+    removeCookie("user");
+  };
+
   return (
     <div className={`col-lg-3 ${styles["wrapper-menu"]}`}>
       <div className={`${styles["menu"]}`}>
