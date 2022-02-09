@@ -26,7 +26,7 @@ function Transfer(props) {
   useEffect(() => {
     setIsLogin(true);
     getDataUser();
-  }, []);
+  }, [getDataUser]);
 
   const getDataUser = () => {
     getUser(id, config)

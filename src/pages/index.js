@@ -56,7 +56,7 @@ export default function Home(props) {
                   className={`navbar-nav mb-2 mb-lg-0 mt-lg-0 mt-md-5 mt-sm-5 `}>
                   <li
                     className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-button"]}`}>
-                    <Link href={"/auth/login"}>
+                    <Link href={"/auth/login"} passHref={true}>
                       <button
                         className={`nav-item mb-md-2 mb-sm-2 mb-lg-0  ${styles["btn-login"]}`}>
                         Login
@@ -65,7 +65,7 @@ export default function Home(props) {
                   </li>
                   <li
                     className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-button"]}`}>
-                    <Link href={"/auth/signup"}>
+                    <Link href={"/auth/signup"} passHref={true}>
                       <button className={styles["btn-signup"]}>Sign Up</button>
                     </Link>
                   </li>

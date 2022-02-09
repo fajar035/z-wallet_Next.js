@@ -96,7 +96,7 @@ function Signup() {
                   Sign Up
                 </button>
                 <p className={`${styles["account"]}`}>
-                  Already have an account? Let's{" "}
+                  Already have an account? Let&apos;s
                   <Link href="/auth/login" passHref={true}>
                     <p className={`${styles["link-signup"]}`}>Login</p>
                   </Link>

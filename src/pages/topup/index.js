@@ -27,7 +27,7 @@ function TopUp(props) {
     setIsLogin(true);
     getDataUser();
     getDataHistory();
-  }, []);
+  }, [getDataUser, getDataHistory]);
 
   const getDataUser = () => {
     getUser(id, config)
