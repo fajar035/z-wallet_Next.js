@@ -74,7 +74,7 @@ function Login() {
                     className={`${styles["input"]}`}
                   />
                 </div>
-                <Link href="/auth/forgot">
+                <Link href="/auth/forgot" passHref={true}>
                   <p className={`${styles["forgot"]}`}>Forgot password?</p>
                 </Link>
                 <span className={`${styles["error-input"]}`}>
@@ -85,7 +85,7 @@ function Login() {
                 </button>
                 <p className={`${styles["account"]}`}>
                   Don’t have an account? Let’s{" "}
-                  <Link href="/auth/signup">
+                  <Link href="/auth/signup" passHref={true}>
                     <p className={`${styles["link-signup"]}`}>Sign Up</p>
                   </Link>
                 </p>

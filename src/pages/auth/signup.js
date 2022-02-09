@@ -89,7 +89,7 @@ function Signup() {
                     className={`${styles["input"]}`}
                   />
                 </div>
-                <Link href="/forgot">
+                <Link href="/forgot" passHref={true}>
                   <p className={`${styles["forgot"]}`}>Forgot password?</p>
                 </Link>
                 <button type="submit" className={`${styles["btn-login"]}`}>
@@ -97,7 +97,7 @@ function Signup() {
                 </button>
                 <p className={`${styles["account"]}`}>
                   Already have an account? Let's{" "}
-                  <Link href="/auth/login">
+                  <Link href="/auth/login" passHref={true}>
                     <p className={`${styles["link-signup"]}`}>Login</p>
                   </Link>
                 </p>
