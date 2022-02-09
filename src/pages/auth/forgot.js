@@ -9,9 +9,9 @@ import FormInputNewPassword from "src/commons/components/Auth/FormInputNewPasswo
 function forgot() {
   // const [emailInput, setEmailInput] = useState("");
 
-  useEffect(() => {
-    // setEmailInput("fajarp300@gmail.com");
-  });
+  // useEffect(() => {
+  //   setEmailInput("fajarp300@gmail.com");
+  // }, []);
 
   return (
     <Layout title="Zwallet | Forgot Password">
