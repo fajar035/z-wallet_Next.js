@@ -12,7 +12,7 @@ import getUser from "src/modules/user";
 import Loading from "src/commons/components/Loading";
 import Link from "next/link";
 
-function transfer(props) {
+function Transfer(props) {
   const [isLogin, setIsLogin] = useState(false);
   const [dataUser, setDataUser] = useState({});
 
@@ -73,7 +73,7 @@ function transfer(props) {
   );
 }
 
-transfer.getInitialProps = async ({ req, res }) => {
+Transfer.getInitialProps = async ({ req, res }) => {
   const data = parseCookies(req);
   // console.log(req);
   if (res) {
@@ -88,4 +88,4 @@ transfer.getInitialProps = async ({ req, res }) => {
   };
 };
 
-export default transfer;
+export default Transfer;
