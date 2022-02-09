@@ -4,13 +4,13 @@ import ColumnLeft from "src/commons/components/Auth/columnLeft";
 import styles from "src/commons/styles/Forgot.module.css";
 import FormInputEmail from "src/commons/components/Auth/FormInputEmail";
 import FormInputNewPassword from "src/commons/components/Auth/FormInputNewPassword";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 function forgot() {
-  const [emailInput, setEmailInput] = useState("");
+  // const [emailInput, setEmailInput] = useState("");
 
   useEffect(() => {
-    setEmailInput("fajarp300@gmail.com");
+    // setEmailInput("fajarp300@gmail.com");
   });
 
   return (
