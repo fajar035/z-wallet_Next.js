@@ -1,76 +1,86 @@
-import { ACTION_STRING } from "../actions/actionString";
+import { ACTION_STRING } from "src/redux/actions/actionString";
 import { ActionType } from "redux-promise-middleware";
 
 const initialState = {
-  userData: {
-    token: null
-    // token: JSON.parse(localStorage["token"] || null)
+  authUser: {
+    token: "",
+    id: "",
+    pin: ""
   },
+
   isPending: false,
   isFulfilled: false,
-  isRejected: false,
-  isLogout: false,
-  err: {}
+  isRejected: false
 };
-
 const authReducer = (prevState = initialState, action) => {
-  // const { authLogin, authLogout } = ACTION_STRING;
-  // const { Pending, Fulfilled, Rejected } = ActionType;
-  console.log(ACTION_STRING);
+  const { authLogin, updatePin } = ACTION_STRING;
+  const { Pending, Fulfilled, Rejected } = ActionType;
+  switch (action.type) {
+    case authLogin.concat("_", Pending):
+      return {
+        ...prevState,
+        isPending: true,
+        isFulfilled: false,
+        isRejected: false
+      };
 
-  // switch (action.type) {
-  //   // case logout
-  //   case authLogout:
-  //     // localStorage.removeItem("token");
-  //     var userData = {
-  //       ...prevState.userData,
-  //       token: null
-  //     };
-  //     return {
-  //       ...prevState,
-  //       isLogout: true,
-  //       userData
-  //     };
+    case authLogin.concat("_", Fulfilled):
+      const data = action.payload.data;
+      var authUser = {
+        token: data.data.token,
+        id: data.data.id,
+        pin: data.data.pin
+      };
+      return {
+        ...prevState,
+        isPending: false,
+        isFulfilled: true,
+        authUser
+      };
 
-  //   // case authLogin + pending
-  //   case authLogin.concat("_", Pending):
-  //     return {
-  //       isPending: true,
-  //       isFulfilled: false,
-  //       isRejected: false
-  //     };
+    case authLogin.concat("_", Rejected):
+      var err = action.payload;
+      return {
+        ...prevState,
+        isPending: false,
+        isRejected: true,
+        err
+      };
 
-  //   // case authLogin + Fulfilled
-  //   case authLogin.concat("_", Fulfilled):
-  //     const data = action.payload.data;
+    case updatePin.concat("_", Pending):
+      return {
+        ...prevState,
+        isPending: true,
+        isFulfilled: false,
+        isRejected: false
+      };
 
-  //     userData = {
-  //       ...prevState.userData,
-  //       token: data.result.token
-  //     };
+    case updatePin.concat("_", Fulfilled):
+      console.log("ACTION-UPDATE PIN >>> ", action);
+      var data = action.payload.data;
+    // var authUser = {
+    //   ...prevState.authUser,
+    //   pin: data.data.pin
+    // };
+    // return {
+    //   ...prevState,
+    //   isPending: false,
+    //   isFulfilled: true,
+    //   authUser
+    // };
 
-  //     return {
-  //       ...prevState,
-  //       isLogout: false,
-  //       isRejected: false,
-  //       isFulfilled: true,
-  //       userData
-  //     };
+    case updatePin.concat("_", Rejected):
+      var err = action.payload;
+      return {
+        ...prevState,
+        isPending: false,
+        isRejected: true,
+        err
+      };
 
-  //   // case authLogin + rejected
-  //   case authLogin.concat("_", Rejected):
-  //     const err = action.payload;
-
-  //     return {
-  //       ...prevState,
-  //       isPending: false,
-  //       isRejected: true,
-  //       err
-  //     };
-
-  //   default:
-  //     return prevState;
-  // }
+    default:
+      return prevState;
+  }
 };
 
 export default authReducer;

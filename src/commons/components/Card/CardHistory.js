@@ -3,7 +3,6 @@ import styles from "src/commons/styles/CardHistory.module.css";
 import photoDefault from "src/commons/assets/images/photo-profile-default.webp";
 
 function CardHistory(props) {
-  console.log("PROPS-CARD-HISTORY", props);
   const host = process.env.NEXT_PUBLIC_HOST;
   return (
     <div className={`row ${styles["wrapper-card"]}`}>
@@ -23,7 +22,7 @@ function CardHistory(props) {
               className={
                 styles.name
               }>{`${props.history.firstName} ${props.history.lastName}`}</p>
-            <p className={styles.status}>{props.history.status}</p>
+            <p className={styles.status}>{props.history.type}</p>
           </div>
         </div>
       </div>

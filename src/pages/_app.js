@@ -1,16 +1,22 @@
 import "../commons/styles/globals.css";
-import Head from "next/head";
 import Script from "next/script";
-// import { Provider } from "react-redux";
-// import store from "../redux/store";
-import { CookiesProvider } from "react-cookie";
+// import { CookiesProvider } from "react-cookie";
+import { Provider } from "react-redux";
+import { store, persistor } from "src/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <CookiesProvider>
+      {/* <CookiesProvider>
         <Component {...pageProps} />
-      </CookiesProvider>
+      </CookiesProvider> */}
+
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
+      </Provider>
 
       {/* <Provider store={store}></Provider> */}
       <Script

@@ -5,55 +5,37 @@ import styles from "src/commons/styles/History.module.css";
 import Header from "src/commons/components/Header";
 import Footer from "src/commons/components/Footer/Footer";
 import MenuSide from "src/commons/components/MenuSide";
-import parseCookies from "src/commons/helpers";
+import { useSelector } from "react-redux";
 import getUser from "src/modules/user";
-import getHistoryTransaction from "src/modules/history";
+import { getHistoryHomeApi } from "src/modules/history";
 import Loading from "src/commons/components/Loading";
 
-function History(props) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [dataUser, setDataUser] = useState({});
-  const [dataHistory, setDataHistory] = useState([]);
+function History() {
+  const isLogin = true;
+  const [loading, setLoading] = useState(false);
+  const [history, setHistory] = useState([]);
+  const dataUser = useSelector((state) => state.user.user);
+  const token = useSelector((state) => state.auth.authUser.token);
 
-  const user = JSON.parse(props.data.user);
-  const id = user.id;
-  const token = user.token;
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
+  const getHistory = () => {
+    setLoading(true);
+    getHistoryHomeApi(token)
+      .then((res) => {
+        setHistory(res.data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.group(err);
+      });
   };
-  console.log("PRPS-HISTORY", props);
 
   useEffect(() => {
-    setIsLogin(true);
-    getDataUser();
-    getDataHistory();
-  }, [getDataUser, getDataHistory]);
+    getHistory();
+  }, []);
 
-  const getDataUser = () => {
-    getUser(id, config)
-      .then((res) => {
-        console.log(res.data.data);
-        setDataUser(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const getDataHistory = () => {
-    getHistoryTransaction(config)
-      .then((res) => {
-        // console.log(res.data.data);
-        setDataHistory(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  console.log("OK", dataHistory);
   return (
     <>
-      {dataHistory.length == 0 ? (
+      {loading ? (
         <Loading />
       ) : (
         <Layout title="Zwallet | History">
@@ -81,9 +63,9 @@ function History(props) {
                         </select>
                       </div>
                       <div className={styles["wrapper-card"]}>
-                        {Array.isArray(dataHistory) &&
-                          dataHistory.length > 0 &&
-                          dataHistory.map((data, index) => {
+                        {Array.isArray(history) &&
+                          history.length > 0 &&
+                          history.map((data, index) => {
                             return <Card history={data} key={index} />;
                           })}
                         {/* <Card />
@@ -104,20 +86,5 @@ function History(props) {
     </>
   );
 }
-
-History.getInitialProps = async ({ req, res }) => {
-  const data = parseCookies(req);
-  // console.log(req);
-  if (res) {
-    if (Object.keys(data).length === 0 && data.constructor === Object) {
-      res.writeHead(301, { Location: "/" });
-      res.end();
-    }
-  }
-
-  return {
-    data: data && data
-  };
-};
 
 export default History;

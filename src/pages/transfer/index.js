@@ -6,46 +6,42 @@ import { useState, useEffect } from "react";
 import styles from "src/commons/styles/transfer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-// import CardHistory from "src/commons/components/Card/CardHistory";
-import parseCookies from "src/commons/helpers";
-import getUser from "src/modules/user";
+import CardReceiver from "src/commons/components/Card/CardReceiver";
+import { getAllUserAPi } from "src/modules/user";
 import Loading from "src/commons/components/Loading";
+import { useSelector } from "react-redux";
 // import Link from "next/link";
 
-function Transfer(props) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [dataUser, setDataUser] = useState({});
+function Transfer() {
+  const isLogin = true;
+  const token = useSelector((state) => state.auth.authUser.token);
 
-  const user = JSON.parse(props.data.user);
-  const id = user.id;
-  const token = user.token;
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
+  // state
+  const [loading, setLoading] = useState(false);
+  const [allUser, setAllUser] = useState([]);
 
-  useEffect(() => {
-    setIsLogin(true);
-    getDataUser();
-  }, [getDataUser]);
-
-  const getDataUser = () => {
-    getUser(id, config)
+  const getAllUser = () => {
+    setLoading(true);
+    getAllUserAPi(token)
       .then((res) => {
-        console.log(res.data.data);
-        setDataUser(res.data.data);
+        setAllUser(res.data.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  console.log(dataUser);
+
+  useEffect(() => {
+    getAllUser();
+  }, []);
   return (
     <>
-      {Object.keys(dataUser).length == 0 ? (
+      {Object.keys(allUser).length == 0 ? (
         <Loading />
       ) : (
         <Layout title="Zwallet | Transfer">
-          <Header user={dataUser} />
+          <Header />
           <main className={`container-fluid ${styles["main-home"]}`}>
             <div className="row">
               <MenuSide />
@@ -56,12 +52,19 @@ function Transfer(props) {
                     <FontAwesomeIcon icon={faSearch} className={styles.icon} />
                     <input type="text" placeholder="Search receiver here" />
                   </div>
-
-                  {/* <CardHistory />
-
-              <CardHistory />
-              <CardHistory />
-              <CardHistory /> */}
+                  {Array.isArray(allUser) &&
+                    allUser.length > 0 &&
+                    allUser.map((user, index) => {
+                      // console.log(user);
+                      return (
+                        <CardReceiver
+                          key={index}
+                          firstName={user.firstName}
+                          lastName={user.lastName}
+                          noTelp={user.noTelp}
+                        />
+                      );
+                    })}
                 </div>
               </div>
             </div>
@@ -72,20 +75,5 @@ function Transfer(props) {
     </>
   );
 }
-
-Transfer.getInitialProps = async ({ req, res }) => {
-  const data = parseCookies(req);
-  // console.log(req);
-  if (res) {
-    if (Object.keys(data).length === 0 && data.constructor === Object) {
-      res.writeHead(301, { Location: "/" });
-      res.end();
-    }
-  }
-
-  return {
-    data: data && data
-  };
-};
 
 export default Transfer;

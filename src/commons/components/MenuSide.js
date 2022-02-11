@@ -8,16 +8,38 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
-import { useCookies } from "react-cookie";
-import { logoutApi } from "src/modules/auth";
-import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+// import { useEffect } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { logoutAction } from "src/redux/actions/auth";
 
 function MenuSide(props) {
-  const [removeCookie] = useCookies(["user"]);
-  console.log("PROPS-MENU", props);
-
-  const deleteCookie = () => {
-    removeCookie("user");
+  const alert = withReactContent(Swal);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const user = useSelector((state) => state.auth);
+  const token = user.authUser.token;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+  const onClickLogout = () => {
+    alert
+      .fire({
+        icon: "warning",
+        title: "Are you sure you want to logout?",
+        showCancelButton: true,
+        confirmButtonText: "Logout",
+        cancelButtonText: `Cancel`
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          console.log("LOGOUT!!!!");
+          dispatch(logoutAction(config));
+          router.push("/");
+        }
+      });
   };
 
   return (
@@ -47,21 +69,20 @@ function MenuSide(props) {
         <Link href={"/profile"}>
           <p
             className={`${styles["menu-item"]}`}
-            style={{ "margin-bottom": "310px" }}>
+            style={{ marginBottom: "310px" }}>
             <FontAwesomeIcon icon={faUser} className={`${styles["icon"]}`} />
             Profile
           </p>
         </Link>
-        <Link href={"/"}>
-          <p className={`${styles["menu-item"]}`}>
-            <FontAwesomeIcon
-              icon={faSignInAlt}
-              className={`${styles["icon"]}`}
-              style={{ "margin-bottom": 0 }}
-            />
-            Log Out
-          </p>
-        </Link>
+
+        <p className={`${styles["menu-item"]}`} onClick={onClickLogout}>
+          <FontAwesomeIcon
+            icon={faSignInAlt}
+            className={`${styles["icon"]}`}
+            style={{ marginBottom: 0 }}
+          />
+          Log Out
+        </p>
       </div>
     </div>
   );

@@ -2,12 +2,13 @@ import styles from "src/commons/styles/Header.module.css";
 import Image from "next/image";
 import pictDefault from "src/commons/assets/images/photo-profile-default.webp";
 import notif from "src/commons/assets/icons/notification.png";
-import { useState, useEffect } from "react";
-import getUser from "src/modules/user";
+import { useSelector } from "react-redux";
 
-function Header(props) {
+function Header() {
+  const user = useSelector((state) => state.user.user);
+  const { firstName, lastName, image, noTelp } = user;
   const host = process.env.NEXT_PUBLIC_HOST;
-  const photoUser = host + "/uploads/" + props.user.image;
+  const photoUser = host + "/uploads/" + image;
 
   return (
     <nav
@@ -42,11 +43,8 @@ function Header(props) {
             </li>
             <li
               className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-info"]}`}>
-              <p
-                className={
-                  styles.name
-                }>{`${props.user.firstName} ${props.user.lastName}`}</p>
-              <p className={styles.phone}>{props.user.noTelp}</p>
+              <p className={styles.name}>{`${firstName} ${lastName}`}</p>
+              <p className={styles.phone}>{noTelp}</p>
             </li>
             <li
               className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-button"]}`}>

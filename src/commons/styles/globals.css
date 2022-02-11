@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
 html,
 body {
   padding: 0;
@@ -35,10 +37,10 @@ a {
   align-items: center;
   font-size: 100px;
   border: none;
-  background-color: #ffcd61;
-  color: #1a1a1a;
+  background-color: #303041;
+  color: #0ea2f6;
   font-weight: 700;
-  font-family: "Playfair Display", serif;
+  font-family: "Poppins", sans-serif !important;
   padding: 50px 50px;
   border-radius: 2rem;
   -webkit-border-radius: 2rem;
@@ -55,8 +57,8 @@ a {
 }
 
 .btn-spinner:hover {
-  background-color: #fcab41;
-  color: #eae2b7;
+  background-color: #0ea2f6;
+  color: #ffffff;
   box-shadow: 0.1rem 1rem - 1rem rgba(0, 0, 0, 0.445);
 }
 
@@ -95,8 +97,8 @@ a {
     -moz-transform: rotate(100deg);
     -ms-transform: rotate(100deg);
     -o-transform: rotate(100deg);
-    border-top-color: #ffa800;
-    border-bottom-color: #ffa800;
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
     border-right-color: transparent;
     border-left-color: transparent;
   }

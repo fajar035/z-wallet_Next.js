@@ -6,18 +6,30 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../../commons/components/Layout";
+import { signupApi } from "src/modules/auth";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function Signup() {
+  const alert = withReactContent(Swal);
+
   const submitSignup = (e) => {
     e.preventDefault();
     const body = {
-      firstname: e.target.firstname.value,
-      lastname: e.target.lastname.value,
+      firstName: e.target.firstname.value,
+      lastName: e.target.lastname.value,
       email: e.target.email.value,
       password: e.target.password.value
     };
-    console.log("BODY-INPUT", body);
-    // loginDispatch(body)
+
+    console.log("BODY", body);
+    signupApi(body)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err.status);
+      });
   };
   return (
     <Layout title="Zwallet | Sign Up">
@@ -95,12 +107,12 @@ function Signup() {
                 <button type="submit" className={`${styles["btn-login"]}`}>
                   Sign Up
                 </button>
-                <p className={`${styles["account"]}`}>
+                <div className={`${styles["account"]}`}>
                   Already have an account? Let&apos;s
                   <Link href="/auth/login" passHref={true}>
                     <p className={`${styles["link-signup"]}`}>Login</p>
                   </Link>
-                </p>
+                </div>
               </form>
             </div>
           </div>

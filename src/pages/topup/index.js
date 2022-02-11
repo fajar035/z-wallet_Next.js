@@ -12,73 +12,35 @@ import Loading from "src/commons/components/Loading";
 
 function TopUp(props) {
   const [isLogin, setIsLogin] = useState(false);
-  const [dataUser, setDataUser] = useState({});
-  const [dataHistory, setDataHistory] = useState([]);
 
-  const user = JSON.parse(props.data.user);
-  const id = user.id;
-  const token = user.token;
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
-  console.log("PRPS-HISTORY", props);
-
-  useEffect(() => {
-    setIsLogin(true);
-    getDataUser();
-    getDataHistory();
-  }, [getDataUser, getDataHistory]);
-
-  const getDataUser = () => {
-    getUser(id, config)
-      .then((res) => {
-        console.log(res.data.data);
-        setDataUser(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const getDataHistory = () => {
-    getHistoryTransaction(config)
-      .then((res) => {
-        // console.log(res.data.data);
-        setDataHistory(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  console.log("OK", dataHistory);
   return (
     <>
-      {dataHistory.length == 0 ? (
+      {/* {dataHistory.length == 0 ? (
         <Loading />
-      ) : (
-        <Layout title="Zwallet | Top Up">
-          <div className={`container-fluid p-0 ${styles.main}`}>
-            <Header user={dataUser} />
+      ) : ( */}
+      <Layout title="Zwallet | Top Up">
+        <div className={`container-fluid p-0 ${styles.main}`}>
+          {/* <Header user={dataUser} /> */}
 
-            <main className={`container-fluid ${styles["main-home"]}`}>
-              <div className="row">
-                <MenuSide />
-                <div className={`col-lg-9 ${styles["wrapper-history"]}`}>
-                  <div className={styles.history}>
-                    <div className="row">
-                      <div className="col-lg-12 d-flex justify-content-between align-items-center">
-                        <p className="m-0 p-2">Top Up</p>
-                      </div>
+          <main className={`container-fluid ${styles["main-home"]}`}>
+            <div className="row">
+              <MenuSide />
+              <div className={`col-lg-9 ${styles["wrapper-history"]}`}>
+                <div className={styles.history}>
+                  <div className="row">
+                    <div className="col-lg-12 d-flex justify-content-between align-items-center">
+                      <p className="m-0 p-2">Top Up</p>
                     </div>
                   </div>
                 </div>
               </div>
-            </main>
+            </div>
+          </main>
 
-            <Footer login={isLogin} />
-          </div>
-        </Layout>
-      )}
+          <Footer login={isLogin} />
+        </div>
+      </Layout>
+      {/* )} */}
     </>
   );
 }

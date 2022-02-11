@@ -8,61 +8,75 @@ import Footer from "src/commons/components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Menu from "src/commons/components/MenuSide";
-import parseCookies from "src/commons/helpers";
-import getUser from "src/modules/user";
-import getHistoryTransaction from "src/modules/history";
+import { useSelector } from "react-redux";
 import Loading from "src/commons/components/Loading";
+import { useRouter } from "next/router";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { getHistoryHomeApi } from "src/modules/history";
 
 function Home(props) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [dataUser, setDataUser] = useState({});
-  const [dataHistory, setDataHistory] = useState([]);
+  const router = useRouter();
+  const user = useSelector((state) => state.auth);
+  const profile = useSelector((state) => state.user);
+  const pin = user.authUser.pin;
+  const token = user.authUser.token;
+  const alert = withReactContent(Swal);
+  console.log("PIN HOME >>>", pin);
 
-  const user = JSON.parse(props.data.user);
-  const id = user.id;
-  const token = user.token;
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
+  // State
+  const [history, setHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setIsLogin(true);
-    getDataUser();
-    getDataHistory();
-  }, [getDataUser, getDataHistory]);
+    getHistory();
+    // if (!pin)
+    //   return alert
+    //     .fire({
+    //       title: "You don't have a pin code yet",
+    //       text: "Please create a pin code first",
+    //       icon: "question"
+    //     })
+    //     .then((res) => {
+    //       if (res.isConfirmed) return router.push("/auth/pin/create");
+    //     });
+    // if (user.isFulfilled === false) {
+    //   alert
+    //     .fire({
+    //       icon: "error",
+    //       title: "You are not logged in",
+    //       text: "Please login first"
+    //     })
+    //     .then((result) => {
+    //       if (result.isConfirmed) {
+    //         router.push("/");
+    //       }
+    //     });
+    // }
+  }, [getHistory]);
+  console.log("USER >>>", user);
+  console.log("USER PROFILE >>>", profile);
 
-  const getDataUser = () => {
-    getUser(id, config)
+  const getHistory = () => {
+    setLoading(true);
+    getHistoryHomeApi(token)
       .then((res) => {
-        console.log(res.data.data);
-        setDataUser(res.data.data);
+        setHistory(res.data.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const getDataHistory = () => {
-    getHistoryTransaction(config)
-      .then((res) => {
-        // console.log(res.data.data);
-        setDataHistory(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  console.log("DATA-USER", dataUser);
-  console.log("DATA-HISTORY", dataHistory);
   return (
     <>
-      {dataHistory.length === 0 ? (
+      {loading ? (
         <Loading />
       ) : (
         <Layout title="Zwallet | Home">
           <div className={`container-fluid p-0 ${styles.main}`}>
-            <Header user={dataUser} />
+            <Header user={profile.user} />
 
             <main className={`container-fluid ${styles["main-home"]}`}>
               <div className="row">
@@ -76,9 +90,11 @@ function Home(props) {
                             <div className={`col-lg-9 ${styles["deposite"]}`}>
                               <p className={styles.title}>Balance</p>
                               <p className={styles.price}>
-                                Rp. {dataUser.balance}
+                                Rp. {profile.user.balance}
                               </p>
-                              <p className={styles.title}>{dataUser.noTelp}</p>
+                              <p className={styles.title}>
+                                {profile.user.noTelp}
+                              </p>
                             </div>
                             <div
                               className={`col-lg-3 ${styles["main-wrapper-btn"]}`}>
@@ -118,9 +134,9 @@ function Home(props) {
                             See all
                           </Link>
                         </div>
-                        {Array.isArray(dataHistory) &&
-                          dataHistory.length > 0 &&
-                          dataHistory.map((data, index) => {
+                        {Array.isArray(history) &&
+                          history.length > 0 &&
+                          history.map((data, index) => {
                             return <Card history={data} key={index} />;
                           })}
                       </div>
@@ -130,27 +146,12 @@ function Home(props) {
               </div>
             </main>
 
-            <Footer login={isLogin} />
+            <Footer login={user.isFulfilled} />
           </div>
         </Layout>
       )}
     </>
   );
 }
-
-Home.getInitialProps = async ({ req, res }) => {
-  const data = parseCookies(req);
-  // console.log(req);
-  if (res) {
-    if (Object.keys(data).length === 0 && data.constructor === Object) {
-      res.writeHead(301, { Location: "/" });
-      res.end();
-    }
-  }
-
-  return {
-    data: data && data
-  };
-};
 
 export default Home;
