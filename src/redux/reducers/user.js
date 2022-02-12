@@ -17,7 +17,7 @@ const initialState = {
 };
 
 const userReducer = (prevState = initialState, action) => {
-  const { dataUser, updatePin } = ACTION_STRING;
+  const { dataUser, updateUser } = ACTION_STRING;
   const { Pending, Fulfilled, Rejected } = ActionType;
 
   switch (action.type) {
@@ -55,6 +55,38 @@ const userReducer = (prevState = initialState, action) => {
         isPending: false,
         isRejected: true,
         err
+      };
+
+    case updateUser.concat("_", Pending):
+      return {
+        ...prevState,
+        isPending: true,
+        isFulfilled: false,
+        isRejected: false
+      };
+
+    case updateUser.concat("_", Fulfilled):
+      console.log("ACTION-UPDATE USER-REDUCER", action);
+      const data2 = action.payload.data;
+      var user = {
+        ...prevState.user,
+        balance: data2.data.balance
+      };
+
+      return {
+        ...prevState,
+        isPending: false,
+        isFulfilled: true,
+        user
+      };
+
+    case updateUser.concat("_", Rejected):
+      const err2 = action.payload;
+      return {
+        ...prevState,
+        isPending: false,
+        isRejected: true,
+        err2
       };
 
     default:

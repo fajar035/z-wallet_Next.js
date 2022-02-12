@@ -1,14 +1,19 @@
 import styles from "src/commons/styles/Header.module.css";
 import Image from "next/image";
-import pictDefault from "src/commons/assets/images/photo-profile-default.webp";
+import pictDefault from "public/picUserDefault.webp";
 import notif from "src/commons/assets/icons/notification.png";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 function Header() {
   const user = useSelector((state) => state.user.user);
   const { firstName, lastName, image, noTelp } = user;
   const host = process.env.NEXT_PUBLIC_HOST;
   const photoUser = host + "/uploads/" + image;
+  const checkPhoto = image;
+
+  // state
+  const [photo, setPhoto] = useState(photoUser);
 
   return (
     <nav
@@ -34,7 +39,10 @@ function Header() {
             <li
               className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-button"]}`}>
               <Image
-                src={photoUser}
+                src={!checkPhoto ? pictDefault : photo}
+                onError={() => setPhoto(pictDefault)}
+                placeholder="blur"
+                blurDataURL={pictDefault}
                 alt="photo-profile"
                 width={50}
                 height={50}

@@ -3,7 +3,9 @@ export const ACTION_STRING = {
   authLogout: "AUTH_LOGOUT",
 
   dataUser: "DATA_USER",
+  updateUser: "UPDATE_USER",
   updatePin: "UPDATE_PIN",
+  transfer: "TRANSFER_DETAIL",
 
   pending: "_PENDING",
   fulfilled: "_FULFILLED",

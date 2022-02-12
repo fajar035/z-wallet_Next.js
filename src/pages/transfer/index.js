@@ -2,27 +2,29 @@ import Layout from "src/commons/components/Layout";
 import MenuSide from "src/commons/components/MenuSide";
 import Header from "src/commons/components/Header.js";
 import Footer from "src/commons/components/Footer/Footer";
-import { useState, useEffect } from "react";
-import styles from "src/commons/styles/transfer.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import CardReceiver from "src/commons/components/Card/CardReceiver";
 import { getAllUserAPi } from "src/modules/user";
+import styles from "src/commons/styles/Transfer.module.css";
 import Loading from "src/commons/components/Loading";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 // import Link from "next/link";
 
 function Transfer() {
   const isLogin = true;
+  const router = useRouter();
   const token = useSelector((state) => state.auth.authUser.token);
-
   // state
   const [loading, setLoading] = useState(false);
   const [allUser, setAllUser] = useState([]);
 
   const getAllUser = () => {
     setLoading(true);
-    getAllUserAPi(token)
+    const params = "?limit=4";
+    getAllUserAPi(token, params)
       .then((res) => {
         setAllUser(res.data.data);
         setLoading(false);
@@ -35,6 +37,11 @@ function Transfer() {
   useEffect(() => {
     getAllUser();
   }, []);
+
+  const onClickHandler = (id) => {
+    router.push(`/user/${id[0]}`);
+  };
+
   return (
     <>
       {Object.keys(allUser).length == 0 ? (
@@ -59,12 +66,45 @@ function Transfer() {
                       return (
                         <CardReceiver
                           key={index}
+                          id={user.id}
                           firstName={user.firstName}
                           lastName={user.lastName}
                           noTelp={user.noTelp}
+                          image={user.image}
+                          onCLick={onClickHandler}
                         />
                       );
                     })}
+
+                  <nav aria-label="Page navigation example">
+                    <ul className="pagination">
+                      <li className="page-item">
+                        <a className="page-link" href="#">
+                          Previous
+                        </a>
+                      </li>
+                      <li className="page-item">
+                        <a className="page-link" href="#">
+                          1
+                        </a>
+                      </li>
+                      <li className="page-item">
+                        <a className="page-link" href="#">
+                          2
+                        </a>
+                      </li>
+                      <li className="page-item">
+                        <a className="page-link" href="#">
+                          3
+                        </a>
+                      </li>
+                      <li className="page-item">
+                        <a className="page-link" href="#">
+                          Next
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
                 </div>
               </div>
             </div>

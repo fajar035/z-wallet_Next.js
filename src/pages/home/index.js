@@ -15,14 +15,13 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { getHistoryHomeApi } from "src/modules/history";
 
-function Home(props) {
+function Home() {
   const router = useRouter();
   const user = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.user);
   const pin = user.authUser.pin;
   const token = user.authUser.token;
   const alert = withReactContent(Swal);
-  console.log("PIN HOME >>>", pin);
 
   // State
   const [history, setHistory] = useState([]);
@@ -69,9 +68,16 @@ function Home(props) {
       });
   };
 
+  const formatBalanceUser = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR"
+  })
+    .format(profile.user.balance)
+    .replace(/(\.|,)00$/g, "");
+
   return (
     <>
-      {loading ? (
+      {loading && !profile.user.image ? (
         <Loading />
       ) : (
         <Layout title="Zwallet | Home">
@@ -90,7 +96,7 @@ function Home(props) {
                             <div className={`col-lg-9 ${styles["deposite"]}`}>
                               <p className={styles.title}>Balance</p>
                               <p className={styles.price}>
-                                Rp. {profile.user.balance}
+                                {formatBalanceUser}
                               </p>
                               <p className={styles.title}>
                                 {profile.user.noTelp}
@@ -98,7 +104,9 @@ function Home(props) {
                             </div>
                             <div
                               className={`col-lg-3 ${styles["main-wrapper-btn"]}`}>
-                              <button className={`${styles["btn-transfer"]}`}>
+                              <button
+                                className={`${styles["btn-transfer"]}`}
+                                onClick={() => router.push("/transfer")}>
                                 {" "}
                                 <FontAwesomeIcon
                                   icon={faArrowUp}
@@ -128,10 +136,10 @@ function Home(props) {
                       <div className={`${styles["wrapper-history"]}`}>
                         <div className={styles["wrapper-title"]}>
                           <p>Transaction History</p>
-                          <Link
-                            href={"/history"}
-                            className={`${styles["link-seeall"]}`}>
-                            See all
+                          <Link href={"/history"}>
+                            <p className={`${styles["link-seeall"]}`}>
+                              See all
+                            </p>
                           </Link>
                         </div>
                         {Array.isArray(history) &&

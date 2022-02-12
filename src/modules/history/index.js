@@ -6,7 +6,7 @@ export const getHistoryHomeApi = (token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
-  const url = `${host}/transaction/history?page=1&limit=4`;
+  const url = `${host}/transaction/history?page=1&limit=5`;
   return axios.get(url, config);
 };
 

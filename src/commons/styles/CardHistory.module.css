@@ -4,7 +4,7 @@
   width: 100%;
   /* border: 1px solid black; */
   margin-right: 0;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
 .img-user {
@@ -29,4 +29,22 @@
   line-height: 19px;
   margin-bottom: 0;
   color: #7a7886;
+}
+
+.amount-in {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1ec15f;
+}
+
+.amount-out {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ff5b37;
 }

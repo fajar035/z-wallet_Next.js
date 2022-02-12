@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 import authReducer from "./auth";
 import userReducer from "./user";
+import { transferReducer } from "./transfer";
 import storage from "redux-persist/lib/storage";
 
 const appReducers = combineReducers({
   auth: authReducer,
-  user: userReducer
+  user: userReducer,
+  transfer: transferReducer
 });
 
 const rootReducer = (state, action) => {

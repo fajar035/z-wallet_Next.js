@@ -1,4 +1,40 @@
 .wrapper-card {
   width: 100%;
+  /* border: 1px solid black; */
+  /* height: 70px; */
+  padding: 20px 40px;
+  display: flex;
+  margin: 30px 0;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.wrapper-card:hover {
   border: 1px solid black;
+}
+
+.name {
+  margin: 0 30px;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #4d4b57;
+}
+
+.phone {
+  margin: 0 30px;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7a7886;
+}
+
+.img {
+  border-radius: 10px;
 }

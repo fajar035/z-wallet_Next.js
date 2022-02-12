@@ -1,0 +1,175 @@
+.main-home {
+  padding: 30px 100px;
+  margin-bottom: 0px;
+  background-color: #e5e5e5;
+}
+
+.wrapper {
+  padding: 20px;
+}
+
+.main {
+  padding: 40px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+  height: 100%;
+}
+
+.title {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+
+.img {
+  border-radius: 10px;
+}
+
+.wrapper-card {
+  display: flex;
+  padding: 20px 40px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin: 40px 0;
+}
+
+.name {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #4d4b57;
+}
+
+.phone {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7a7886;
+}
+
+.wrapper-card2 {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 40px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin: 40px 0;
+}
+
+.title-card {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7a7886;
+}
+
+.value-card {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30px;
+  color: #514f5b;
+}
+
+.wrapper-btn-confirm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-confirm {
+  background: #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  width: 170px;
+  height: 57px;
+}
+
+.btn-confirm:focus,
+.btn-download-pdf:focus {
+  outline: none;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.icon-success {
+  font-size: 70px;
+  color: #1ec15f;
+  margin-bottom: 30px;
+}
+
+.icon-failed {
+  font-size: 70px;
+  color: #ff5b37;
+  margin-bottom: 30px;
+  transform: rotate(43deg);
+}
+
+.title-status {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30px;
+  color: #4d4b57;
+}
+
+.btn-download-pdf {
+  background: rgba(99, 121, 244, 0.15);
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  width: 200px;
+  height: 57px;
+  margin-right: 20px;
+  border: none;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #6379f4;
+}
+
+.icon-download-pdf {
+  font-size: 20px;
+  color: #6379f4;
+  margin-right: 10px;
+}
+
+.msg-status {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+  color: #7a7886;
+  text-align: center;
+  width: 77%;
+}

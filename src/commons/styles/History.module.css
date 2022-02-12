@@ -81,3 +81,12 @@
 .filter:focus {
   outline: none;
 }
+
+.title {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}

@@ -49,7 +49,9 @@ function History() {
                   <div className={styles.history}>
                     <div className="row">
                       <div className="col-lg-12 d-flex justify-content-between align-items-center">
-                        <p className="m-0 p-2">Transaction History</p>
+                        <p className={`m-0 p-2 ${styles["title"]}`}>
+                          Transaction History
+                        </p>
 
                         <select
                           className={`${styles.filter} dropdown-toggle p-2 ms-3`}

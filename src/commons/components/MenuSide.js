@@ -69,7 +69,7 @@ function MenuSide(props) {
         <Link href={"/profile"}>
           <p
             className={`${styles["menu-item"]}`}
-            style={{ marginBottom: "310px" }}>
+            style={{ marginBottom: "70%" }}>
             <FontAwesomeIcon icon={faUser} className={`${styles["icon"]}`} />
             Profile
           </p>
