@@ -18,7 +18,7 @@ import withReactContent from "sweetalert2-react-content";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
-function confirmationTransfer() {
+function ConfirmationTransfer() {
   const isLogin = true;
   const transferDetail = useSelector((state) => state.transfer);
   const router = useRouter();
@@ -76,7 +76,7 @@ function confirmationTransfer() {
   useEffect(() => {
     getUserById();
     // checkPinApi();
-  }, []);
+  }, [getUserById]);
   return (
     <>
       <Layout title="Zwallet | Transfer Failed">
@@ -152,4 +152,4 @@ function confirmationTransfer() {
   );
 }
 
-export default confirmationTransfer;
+export default ConfirmationTransfer;

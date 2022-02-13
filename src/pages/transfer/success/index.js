@@ -19,7 +19,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { faArrowAltCircleDown } from "@fortawesome/free-solid-svg-icons";
 
-function confirmationTransfer() {
+function ConfirmationTransfer() {
   const isLogin = true;
   const transferDetail = useSelector((state) => state.transfer);
   const router = useRouter();
@@ -71,7 +71,7 @@ function confirmationTransfer() {
   useEffect(() => {
     getUserById();
     // checkPinApi();
-  }, []);
+  }, [getUserById]);
   return (
     <>
       <Layout title="Zwallet | Transfer Success">
@@ -155,4 +155,4 @@ function confirmationTransfer() {
   );
 }
 
-export default confirmationTransfer;
+export default ConfirmationTransfer;

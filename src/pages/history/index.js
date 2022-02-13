@@ -31,7 +31,7 @@ function History() {
 
   useEffect(() => {
     getHistory();
-  }, []);
+  }, [getHistory()]);
 
   return (
     <>

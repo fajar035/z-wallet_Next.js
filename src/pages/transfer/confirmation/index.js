@@ -16,7 +16,7 @@ import { transferApi } from "src/modules/transactions";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-function confirmationTransfer() {
+function ConfirmationTransfer() {
   const isLogin = true;
   const transferDetail = useSelector((state) => state.transfer);
   const router = useRouter();
@@ -114,7 +114,7 @@ function confirmationTransfer() {
   useEffect(() => {
     getUserById();
     // checkPinApi();
-  }, []);
+  }, [getUserById]);
   return (
     <>
       <Layout title="Zwallet | Confirmation Transfer">
@@ -230,4 +230,4 @@ function confirmationTransfer() {
   );
 }
 
-export default confirmationTransfer;
+export default ConfirmationTransfer;

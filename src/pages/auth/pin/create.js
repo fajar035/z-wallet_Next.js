@@ -10,7 +10,7 @@ import withReactContent from "sweetalert2-react-content";
 import Loading from "src/commons/components/Loading";
 import { updatePinAction } from "src/redux/actions/auth";
 
-function createPin() {
+function CreatePin() {
   const dispatch = useDispatch();
   const router = useRouter();
   const alert = withReactContent(Swal);
@@ -110,4 +110,4 @@ function createPin() {
   );
 }
 
-export default createPin;
+export default CreatePin;
