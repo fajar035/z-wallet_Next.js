@@ -4,7 +4,7 @@ import Header from "src/commons/components/Header.js";
 import Footer from "src/commons/components/Footer/Footer";
 import CardReceiver from "src/commons/components/Card/CardReceiver";
 import { getAllUserAPi } from "src/modules/user";
-import styles from "src/commons/styles/Transfer.module.css";
+import styles from "src/commons/styles/transfer.module.css";
 import Loading from "src/commons/components/Loading";
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
