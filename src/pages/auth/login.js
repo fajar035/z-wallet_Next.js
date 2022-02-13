@@ -62,7 +62,7 @@ function Login() {
 
       router.push("/home");
     }
-  }, [auth.isFulfilled, auth.isPending, router]);
+  }, [auth.isFulfilled, auth.isPending, router, alert, dispatch, id, token]);
 
   return (
     <>
