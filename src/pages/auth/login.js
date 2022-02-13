@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ColumnLeft from "src/commons/components/Auth/columnLeft";
+import ColumnLeft from "src/commons/components/Auth/ColumnLeft";
 import styles from "src/commons/styles/Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
