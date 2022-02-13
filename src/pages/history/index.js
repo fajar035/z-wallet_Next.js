@@ -27,7 +27,7 @@ function History() {
       .catch((err) => {
         console.group(err);
       });
-  });
+  }, []);
 
   useEffect(() => {
     getHistory();
