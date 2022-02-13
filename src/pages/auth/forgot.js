@@ -1,6 +1,6 @@
 // import Link from "next/link";
 import Layout from "src/commons/components/Layout";
-import ColumnLeft from "src/commons/components/Auth/columnLeft";
+import ColumnLeft from "src/commons/components/Auth/ColumnLeft";
 import styles from "src/commons/styles/Forgot.module.css";
 import FormInputEmail from "src/commons/components/Auth/FormInputEmail";
 import FormInputNewPassword from "src/commons/components/Auth/FormInputNewPassword";
