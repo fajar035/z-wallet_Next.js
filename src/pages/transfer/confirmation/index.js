@@ -114,7 +114,7 @@ function ConfirmationTransfer() {
   useEffect(() => {
     getUserById();
     // checkPinApi();
-  }, [getUserById]);
+  }, [getUserById, id, token]);
   return (
     <>
       <Layout title="Zwallet | Confirmation Transfer">

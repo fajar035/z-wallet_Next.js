@@ -32,7 +32,7 @@ function Transfer() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     getAllUser();

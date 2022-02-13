@@ -75,7 +75,7 @@ function ConfirmationTransfer() {
   useEffect(() => {
     getUserById();
     // checkPinApi();
-  }, [getUserById]);
+  }, [getUserById, token, id]);
   return (
     <>
       <Layout title="Zwallet | Transfer Failed">

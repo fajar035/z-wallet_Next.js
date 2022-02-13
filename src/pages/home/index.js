@@ -74,7 +74,7 @@ function Home() {
     //       }
     //     });
     // }
-  }, [getHistory]);
+  }, [getHistory, token]);
 
   return (
     <>
