@@ -27,11 +27,11 @@ function History() {
       .catch((err) => {
         console.group(err);
       });
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     getHistory();
-  }, [getHistory, dataUser, token]);
+  }, [getHistory]);
 
   return (
     <>
