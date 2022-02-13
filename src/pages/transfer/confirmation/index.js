@@ -70,7 +70,7 @@ function ConfirmationTransfer() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id, token]);
 
   const handleChangePin = (e) => {
     setPin(e.target.value);
@@ -114,7 +114,7 @@ function ConfirmationTransfer() {
   useEffect(() => {
     getUserById();
     // checkPinApi();
-  }, [getUserById, id, token]);
+  }, [getUserById]);
   return (
     <>
       <Layout title="Zwallet | Confirmation Transfer">

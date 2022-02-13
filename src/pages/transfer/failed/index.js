@@ -70,12 +70,12 @@ function ConfirmationTransfer() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     getUserById();
     // checkPinApi();
-  }, [getUserById, token, id]);
+  }, [getUserById]);
   return (
     <>
       <Layout title="Zwallet | Transfer Failed">

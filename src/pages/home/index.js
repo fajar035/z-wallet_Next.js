@@ -40,7 +40,7 @@ function Home() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [token]);
 
   const formatBalanceUser = new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -74,7 +74,7 @@ function Home() {
     //       }
     //     });
     // }
-  }, [getHistory, token]);
+  }, [getHistory]);
 
   return (
     <>

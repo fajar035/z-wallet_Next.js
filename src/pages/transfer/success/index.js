@@ -65,12 +65,12 @@ function ConfirmationTransfer() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [token, id]);
 
   useEffect(() => {
     getUserById();
     // checkPinApi();
-  }, [getUserById, token, id]);
+  }, [getUserById]);
   return (
     <>
       <Layout title="Zwallet | Transfer Success">
