@@ -6,7 +6,7 @@ import CardReceiver from "src/commons/components/Card/CardReceiver";
 import { getAllUserAPi } from "src/modules/user";
 import styles from "src/commons/styles/Transfer.module.css";
 import Loading from "src/commons/components/Loading";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +21,7 @@ function Transfer() {
   const [loading, setLoading] = useState(false);
   const [allUser, setAllUser] = useState([]);
 
-  const getAllUser = () => {
+  const getAllUser = useCallback(() => {
     setLoading(true);
     const params = "?limit=4";
     getAllUserAPi(token, params)
@@ -32,11 +32,11 @@ function Transfer() {
       .catch((err) => {
         console.log(err);
       });
-  };
+  });
 
   useEffect(() => {
     getAllUser();
-  }, []);
+  }, [getAllUser]);
 
   const onClickHandler = (id) => {
     router.push(`/user/${id[0]}`);

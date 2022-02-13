@@ -1,7 +1,7 @@
 import Layout from "src/commons/components/Layout";
 import Link from "next/link";
 import Card from "src/commons/components/Card/CardHistory";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import styles from "src/commons/styles/Home.module.css";
 import Header from "src/commons/components/Header";
 import Footer from "src/commons/components/Footer/Footer";
@@ -30,7 +30,7 @@ function Home() {
   console.log("USER >>>", user);
   console.log("USER PROFILE >>>", profile);
 
-  const getHistory = () => {
+  const getHistory = useCallback(() => {
     setLoading(true);
     getHistoryHomeApi(token)
       .then((res) => {
@@ -40,7 +40,7 @@ function Home() {
       .catch((err) => {
         console.log(err);
       });
-  };
+  });
 
   const formatBalanceUser = new Intl.NumberFormat("id-ID", {
     style: "currency",

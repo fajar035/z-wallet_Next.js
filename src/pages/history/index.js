@@ -1,6 +1,6 @@
 import Layout from "src/commons/components/Layout";
 import Card from "src/commons/components/Card/CardHistory";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import styles from "src/commons/styles/History.module.css";
 import Header from "src/commons/components/Header";
 import Footer from "src/commons/components/Footer/Footer";
@@ -17,7 +17,7 @@ function History() {
   const dataUser = useSelector((state) => state.user.user);
   const token = useSelector((state) => state.auth.authUser.token);
 
-  const getHistory = () => {
+  const getHistory = useCallback(() => {
     setLoading(true);
     getHistoryHomeApi(token)
       .then((res) => {
@@ -27,7 +27,7 @@ function History() {
       .catch((err) => {
         console.group(err);
       });
-  };
+  });
 
   useEffect(() => {
     getHistory();
