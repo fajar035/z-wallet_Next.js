@@ -74,7 +74,7 @@ function Home() {
     //       }
     //     });
     // }
-  }, []);
+  }, [getHistory]);
 
   return (
     <>
@@ -140,7 +140,7 @@ function Home() {
                       <div className={`${styles["wrapper-history"]}`}>
                         <div className={styles["wrapper-title"]}>
                           <p>Transaction History</p>
-                          <Link href={"/history"}>
+                          <Link href={"/history"} passHref>
                             <p className={`${styles["link-seeall"]}`}>
                               See all
                             </p>

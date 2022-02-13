@@ -6,7 +6,7 @@ import styles from "src/commons/styles/TransferConfirmation.module.css";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserAction } from "src/redux/actions/user";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import { getUserIdApi } from "src/modules/user/index";
 import Loading from "src/commons/components/Loading";
@@ -58,7 +58,7 @@ function ConfirmationTransfer() {
   const [pin, setPin] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const getUserById = () => {
+  const getUserById = useCallback(() => {
     setLoading(true);
     getUserIdApi(id, token)
       .then((res) => {
@@ -70,7 +70,7 @@ function ConfirmationTransfer() {
       .catch((err) => {
         console.log(err);
       });
-  };
+  });
 
   const handleChangePin = (e) => {
     setPin(e.target.value);

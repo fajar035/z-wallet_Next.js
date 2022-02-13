@@ -5,19 +5,18 @@ import Footer from "src/commons/components/Footer/Footer";
 import styles from "src/commons/styles/TransferConfirmation.module.css";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserAction } from "src/redux/actions/user";
+// import { updateUserAction } from "src/redux/actions/user";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getUserIdApi } from "src/modules/user/index";
-import Loading from "src/commons/components/Loading";
+// import Loading from "src/commons/components/Loading";
 import photoDefault from "public/picUserDefault.webp";
-import { checkPinApi } from "src/modules/user/index";
-import { transferApi } from "src/modules/transactions";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { faArrowAltCircleDown } from "@fortawesome/free-solid-svg-icons";
+import { useCallback } from "react";
 
 function ConfirmationTransfer() {
   const isLogin = true;
@@ -54,7 +53,7 @@ function ConfirmationTransfer() {
   const [pin, setPin] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const getUserById = () => {
+  const getUserById = useCallback(() => {
     setLoading(true);
     getUserIdApi(id, token)
       .then((res) => {
@@ -66,7 +65,7 @@ function ConfirmationTransfer() {
       .catch((err) => {
         console.log(err);
       });
-  };
+  });
 
   useEffect(() => {
     getUserById();
