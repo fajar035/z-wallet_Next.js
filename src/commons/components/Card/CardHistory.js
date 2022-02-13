@@ -8,6 +8,7 @@ function CardHistory(props) {
   const checkPhoto = props.history.image;
   const photo = `${host}/uploads/${props.history.image}`;
   const type = props.history.type;
+  const status = props.history.status;
   // state
   const [photoState, setPhoto] = useState(photo);
 
@@ -45,10 +46,12 @@ function CardHistory(props) {
         </div>
       </div>
       <div
-        className={`col-lg-4 d-flex align-items-center justify-content-end p-0`}>
+        className={`col-lg-4 d-flex align-items-center justify-content-end p-0 m-0`}>
         <p
           className={
-            type == "send" ? styles["amount-out"] : styles["amount-in"]
+            type == "send" || status == "pending"
+              ? styles["amount-out"]
+              : styles["amount-in"]
           }>
           {type == "send" ? "-" : "+"}
           {formatAmount}

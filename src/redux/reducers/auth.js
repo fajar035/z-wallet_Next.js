@@ -4,8 +4,7 @@ import { ActionType } from "redux-promise-middleware";
 const initialState = {
   authUser: {
     token: "",
-    id: "",
-    pin: ""
+    id: ""
   },
 
   isPending: false,
@@ -28,8 +27,7 @@ const authReducer = (prevState = initialState, action) => {
       const data = action.payload.data;
       var authUser = {
         token: data.data.token,
-        id: data.data.id,
-        pin: data.data.pin
+        id: data.data.id
       };
       return {
         ...prevState,
@@ -39,7 +37,8 @@ const authReducer = (prevState = initialState, action) => {
       };
 
     case authLogin.concat("_", Rejected):
-      var err = action.payload;
+      var err = action.payload.response;
+
       return {
         ...prevState,
         isPending: false,

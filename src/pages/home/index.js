@@ -27,6 +27,28 @@ function Home() {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  console.log("USER >>>", user);
+  console.log("USER PROFILE >>>", profile);
+
+  const getHistory = () => {
+    setLoading(true);
+    getHistoryHomeApi(token)
+      .then((res) => {
+        setHistory(res.data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const formatBalanceUser = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR"
+  })
+    .format(profile.user.balance)
+    .replace(/(\.|,)00$/g, "");
+
   useEffect(() => {
     getHistory();
     // if (!pin)
@@ -52,28 +74,7 @@ function Home() {
     //       }
     //     });
     // }
-  }, [getHistory]);
-  console.log("USER >>>", user);
-  console.log("USER PROFILE >>>", profile);
-
-  const getHistory = () => {
-    setLoading(true);
-    getHistoryHomeApi(token)
-      .then((res) => {
-        setHistory(res.data.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const formatBalanceUser = new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR"
-  })
-    .format(profile.user.balance)
-    .replace(/(\.|,)00$/g, "");
+  }, []);
 
   return (
     <>
@@ -114,7 +115,10 @@ function Home() {
                                 />{" "}
                                 Transfer
                               </button>
-                              <button className={`${styles["btn-transfer"]}`}>
+                              <button
+                                className={`${styles["btn-transfer"]}`}
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalTopUp">
                                 {" "}
                                 <FontAwesomeIcon
                                   icon={faPlus}

@@ -40,13 +40,6 @@ function confirmationTransfer() {
     .format(balanceUser)
     .replace(/(\.|,)00$/g, "");
 
-  const formatTransferDetail = new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR"
-  })
-    .format(transferDetail.balance)
-    .replace(/(\.|,)00$/g, "");
-
   const formatBalanceLeft = new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR"
@@ -72,45 +65,6 @@ function confirmationTransfer() {
       })
       .catch((err) => {
         console.log(err);
-      });
-  };
-
-  const handleChangePin = (e) => {
-    setPin(e.target.value);
-  };
-
-  const handleContinue = () => {
-    checkPinApi(pin, token)
-      .then((res) => {
-        alert.fire({
-          position: "center",
-          icon: "success",
-          title: "Correct pin",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        const body = {
-          receiverId: transferDetail.receiverId,
-          amount: transferDetail.balance,
-          notes: transferDetail.note
-        };
-        transferApi(token, body)
-          .then((res) => {
-            dispatch(updateUserAction(myId, token));
-            console.log("tendang ke page sukses");
-          })
-          .catch((err) => {
-            if (err) console.log("tendang ke page failed");
-          });
-      })
-      .catch((err) => {
-        alert.fire({
-          position: "center",
-          icon: "error",
-          title: "Wrong Pin",
-          showConfirmButton: false,
-          timer: 1500
-        });
       });
   };
 

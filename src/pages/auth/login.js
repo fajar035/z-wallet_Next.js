@@ -26,18 +26,38 @@ function Login() {
   const token = auth.authUser.token;
 
   const onSubmit = (data) => {
-    dispatch(loginAction(data));
+    dispatch(loginAction(data))
+      .then((res) => {
+        console.log("RESPONSE DISPATCH LOGIN ACTION", res);
+      })
+      .catch((err) => {
+        const errorMsg = err.response.data.msg;
+        if (errorMsg === "Wrong password")
+          return alert.fire({
+            title: "Wrong Username / Password",
+            icon: "warning"
+          });
+
+        if (errorMsg === "Account not active")
+          return alert.fire({
+            title: "Account not Active",
+            icon: "error",
+            text: "Please activate your account first, check your email for activation"
+          });
+        if (errorMsg === "Email / Account not registed")
+          return alert.fire({ title: "Email / Account not registed" });
+      });
   };
 
   useEffect(() => {
     if (auth.isFulfilled === true) {
       dispatch(getUserAction(id, token));
       alert.fire({
-        position: "top-end",
+        position: "center",
         icon: "success",
         title: "Login Success",
         showConfirmButton: false,
-        timer: 1500
+        timer: 2700
       });
 
       router.push("/home");

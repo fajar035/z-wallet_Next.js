@@ -9,8 +9,10 @@ import Layout from "../../commons/components/Layout";
 import { signupApi } from "src/modules/auth";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useRouter } from "next/router";
 
 function Signup() {
+  const router = useRouter();
   const alert = withReactContent(Swal);
 
   const submitSignup = (e) => {
@@ -25,10 +27,24 @@ function Signup() {
     console.log("BODY", body);
     signupApi(body)
       .then((res) => {
-        console.log(res);
+        alert
+          .fire({
+            icon: "success",
+            title: res.data.msg,
+            text: "Check your email, and verify first to login your account",
+            showConfirmButton: true
+          })
+          .then(() => {
+            router.push("/auth/login");
+          });
       })
       .catch((err) => {
-        console.log(err.status);
+        console.log(err.response.data.msg);
+        alert.fire({
+          icon: "error",
+          title: err.response.data.msg,
+          showConfirmButton: true
+        });
       });
   };
   return (
@@ -101,9 +117,7 @@ function Signup() {
                     className={`${styles["input"]}`}
                   />
                 </div>
-                <Link href="/forgot" passHref={true}>
-                  <p className={`${styles["forgot"]}`}>Forgot password?</p>
-                </Link>
+
                 <button type="submit" className={`${styles["btn-login"]}`}>
                   Sign Up
                 </button>
