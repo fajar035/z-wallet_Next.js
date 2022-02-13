@@ -70,7 +70,7 @@ function ConfirmationTransfer() {
       .catch((err) => {
         console.log(err);
       });
-  }, [token]);
+  }, [id, token]);
 
   useEffect(() => {
     getUserById();
