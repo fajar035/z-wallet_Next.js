@@ -71,7 +71,7 @@ function Login() {
       });
 
       if (!pinState) return router.push("/auth/pin/create");
-      // router.push("/home");
+      // router.push("/home")
     }
   }, [
     auth.isFulfilled,
