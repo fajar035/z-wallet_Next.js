@@ -25,14 +25,14 @@ function Login() {
   const id = auth.authUser.id;
   const token = auth.authUser.token;
 
-  // state
-  const [pinState, setPinState] = useState("");
-
   const onSubmit = (data) => {
     dispatch(loginAction(data))
       .then((res) => {
         console.log("RESPONSE DISPATCH LOGIN ACTION", res);
-        setPinState(res.action.payload.data.data.pin);
+        const pin = res.action.payload.data.data.pin;
+        console.log("PIN", pin);
+        if (!pin) return router.push("/auth/pin/create");
+        router.push("/home");
       })
       .catch((err) => {
         const errorMsg = err.response.data.msg;
@@ -69,21 +69,9 @@ function Login() {
         showConfirmButton: false,
         timer: 2700
       });
-
-      if (!pinState) return router.push("/auth/pin/create");
-      // router.push("/home")
     }
-  }, [
-    auth.isFulfilled,
-    auth.isPending,
-    router,
-    alert,
-    dispatch,
-    id,
-    token,
-    pinState
-  ]);
-  console.log("PIN USER", pinState);
+  }, [auth.isFulfilled, auth.isPending, router, alert, dispatch, id, token]);
+
   return (
     <>
       {loading ? (
