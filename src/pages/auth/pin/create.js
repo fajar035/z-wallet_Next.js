@@ -3,7 +3,7 @@ import styles from "../../../commons/styles/Createpin.module.css";
 import Layout from "../../../commons/components/Layout";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updatePin } from "src/modules/user";
+import { updatePinApi } from "src/modules/user";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -28,32 +28,33 @@ function CreatePin() {
 
   const handlerClickConfirm = () => {
     setLoading(true);
-    dispatch(updatePinAction(id, token, dataPin));
-    // updatePin(id, token, dataPin)
-    //   .then((res) => {
-    //     setLoading(false);
-    //     console.log(res);
-    //     alert
-    //       .fire({
-    //         icon: "success",
-    //         title: "Create Pin Success"
-    //       })
-    //       .then((result) => {
-    //         if (result.isConfirmed) {
-    //           setLoading(true);
-    //           router.push("/home");
-    //         }
-    //       });
-    //   })
-    //   .catch((err) => {
-    //     setLoading(false);
-    //     alert.fire({
-    //       title: "Input cannot be empty",
-    //       text: "Please fill in the correct",
-    //       icon: "error"
-    //     });
-    //   });
+    // dispatch(updatePinAction(id, token, dataPin));
+    updatePinApi(id, token, dataPin)
+      .then((res) => {
+        setLoading(false);
+        console.log(res);
+        alert
+          .fire({
+            icon: "success",
+            title: "Create Pin Success"
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              setLoading(true);
+              router.push("/home");
+            }
+          });
+      })
+      .catch((err) => {
+        setLoading(false);
+        alert.fire({
+          title: "Input cannot be empty",
+          text: "Please fill in the correct",
+          icon: "error"
+        });
+      });
   };
+
   console.log("LOADING >>>", loading);
   return (
     <>

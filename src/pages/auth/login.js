@@ -7,7 +7,7 @@ import { faLock } from "@fortawesome/free-solid-svg-icons";
 import Layout from "src/commons/components/Layout";
 import { loginAction } from "src/redux/actions/auth";
 import { getUserAction } from "src/redux/actions/user";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
@@ -25,10 +25,14 @@ function Login() {
   const id = auth.authUser.id;
   const token = auth.authUser.token;
 
+  // state
+  const [pinState, setPinState] = useState("");
+
   const onSubmit = (data) => {
     dispatch(loginAction(data))
       .then((res) => {
         console.log("RESPONSE DISPATCH LOGIN ACTION", res);
+        setPinState(res.action.payload.data.data.pin);
       })
       .catch((err) => {
         const errorMsg = err.response.data.msg;
@@ -46,6 +50,12 @@ function Login() {
           });
         if (errorMsg === "Email / Account not registed")
           return alert.fire({ title: "Email / Account not registed" });
+
+        if (errorMsg === "Input your email & Password")
+          return alert.fire({
+            title: "Please fill in your email and password",
+            icon: "warning"
+          });
       });
   };
 
@@ -60,10 +70,11 @@ function Login() {
         timer: 2700
       });
 
+      if (!pinState) return router.push("/auth/pin/create");
       router.push("/home");
     }
   }, [auth.isFulfilled, auth.isPending, router, alert, dispatch, id, token]);
-
+  console.log("PIN USER", pinState);
   return (
     <>
       {loading ? (
