@@ -8,6 +8,7 @@
   /* height: 100%; */
   margin: 0 auto;
   padding: 20px;
+  padding-bottom: 0;
   /* border: 1px solid black; */
 }
 
@@ -57,7 +58,7 @@
   background: rgba(255, 255, 255, 0.2);
   height: 50px;
   width: 160px;
-  border: 1px solid #ffffff;
+  border: none;
   box-sizing: border-box;
   border-radius: 10px;
   font-family: Nunito Sans;
@@ -67,6 +68,14 @@
   line-height: 25px;
   color: #ffffff;
   margin: 20px 0;
+}
+
+.btn-transfer:hover {
+  border: 1px solid #ffffff;
+}
+
+.btn-transfer:focus {
+  outline: none;
 }
 
 .icon-btn {
@@ -98,7 +107,8 @@
 }
 
 .deposite {
-  background: #6379f4;
+  /* background: #6379f4; */
+  background: linear-gradient(180deg, #4927f2 0%, #444ab1 100%);
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   padding: 20px;
@@ -106,7 +116,8 @@
 
 .main-wrapper-btn {
   padding: 20px;
-  background: #6379f4;
+  /* background: #6379f4; */
+  background: linear-gradient(180deg, #4927f2 0%, #444ab1 100%);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -135,6 +146,10 @@
   line-height: 19px;
   cursor: pointer;
   color: #6379f4 !important;
+}
+
+.link-seeall:hover {
+  text-decoration: underline;
 }
 
 .wrapper-history {

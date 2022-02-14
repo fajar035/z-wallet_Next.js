@@ -4,6 +4,7 @@ export const ACTION_STRING = {
 
   dataUser: "DATA_USER",
   updateUser: "UPDATE_USER",
+  updateImageUser: "UPDATE_IMAGE",
   updatePin: "UPDATE_PIN",
   transfer: "TRANSFER_DETAIL",
 

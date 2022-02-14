@@ -30,6 +30,7 @@ function CardHistory(props) {
               blurDataURL={photoDefault}
               onError={() => setPhoto(photoDefault)}
               // src={!checkPhoto ? photoDefault : photo}
+              objectFit="cover"
               alt="photo user"
               className={styles["img-user"]}
               width={90}

@@ -20,6 +20,7 @@ function CardReceiver(props) {
           width={70}
           height={70}
           className={styles.img}
+          objectFit="cover"
         />
 
         <div className="d-flex flex-column">

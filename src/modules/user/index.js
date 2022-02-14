@@ -33,3 +33,35 @@ export const checkPinApi = (dataPin, token) => {
   };
   return axios.get(url, config);
 };
+
+export const updateImageApi = (id, token, body) => {
+  const url = `${host}/user/image/${id}`;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+  return axios.patch(url, body, config);
+};
+
+export const deleteImageApi = (id, token) => {
+  const url = `${host}/user/image/${id}`;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+  return axios.delete(url, config);
+};
+
+export const updatePassword = (id, token, body) => {
+  const url = `${host}/user/password/${id}`;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+  return axios.patch(url, body, config);
+};
+
+export const updatePhone = (id, token, body) => {
+  const url = `${host}/user/profile/${id}`;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+  return axios.patch(url, body, config);
+};

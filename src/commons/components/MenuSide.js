@@ -78,8 +78,7 @@ function MenuSide() {
         console.log(err.response);
       });
   };
-  console.log("msg", msg);
-  console.log("url", url);
+
   return (
     <>
       <div className={`col-lg-3 ${styles["wrapper-menu"]}`}>

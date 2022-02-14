@@ -70,7 +70,8 @@ const userReducer = (prevState = initialState, action) => {
       const data2 = action.payload.data;
       var user = {
         ...prevState.user,
-        balance: data2.data.balance
+        balance: data2.data.balance,
+        image: data2.data.image
       };
 
       return {

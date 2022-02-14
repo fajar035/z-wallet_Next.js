@@ -1,0 +1,121 @@
+.main-home {
+  padding: 30px 100px;
+  margin-bottom: 0px;
+  background-color: #e5e5e5;
+}
+
+.wrapper-menu {
+  /* height: 740px; */
+  margin: 0 auto;
+  padding: 20px;
+  /* border: 1px solid black; */
+}
+
+.wrapper-history {
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.history {
+  padding: 40px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+  height: 100%;
+}
+
+.img-profile {
+  border-radius: 10px;
+}
+
+.title-name {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  color: #4d4b57;
+}
+
+.title-phone {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 27px;
+  color: #7a7886;
+  margin-bottom: 40px;
+}
+
+.wrapper-options-photo {
+  width: 150px;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.icon-options {
+  margin-right: 5px;
+}
+
+.title-option-edit {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 27px;
+  color: #7a7886;
+  cursor: pointer;
+}
+.title-option-delete {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 27px;
+  color: #7a7886;
+  cursor: pointer;
+}
+
+.title-option-edit:hover {
+  color: blue;
+}
+.title-option-delete:hover {
+  color: red;
+}
+
+.card {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  padding-left: 40px;
+  background: #e5e8ed;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: padding-right 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  background: #e5e8ed;
+  transition: padding-right 0.3s;
+  padding-right: 20px;
+}
+
+.title-card {
+  margin: 0;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 28px;
+  color: #4d4b57;
+}
+
+.icon-card {
+  color: #4d4b57;
+}
