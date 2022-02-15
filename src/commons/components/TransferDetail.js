@@ -88,7 +88,7 @@ function transferDetail() {
       "November",
       "December"
     ];
-    const day = d.getDay();
+    const day = d.getDate();
     const month = m[d.getMonth()];
     const year = d.getFullYear();
     const hours = addZero(d.getHours());
@@ -100,6 +100,8 @@ function transferDetail() {
       note,
       date
     };
+
+    console.log("DAY >>>", day);
 
     if (balance >= balanceUser)
       return alert.fire({
