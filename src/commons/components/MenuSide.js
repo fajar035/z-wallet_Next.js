@@ -113,7 +113,7 @@ function MenuSide() {
           <Link href={"/profile"}>
             <p
               className={`${styles["menu-item"]}`}
-              style={{ marginBottom: "70%" }}>
+              style={{ marginBottom: "300px", paddingBottom: "50px" }}>
               <FontAwesomeIcon icon={faUser} className={`${styles["icon"]}`} />
               Profile
             </p>

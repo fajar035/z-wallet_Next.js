@@ -35,7 +35,7 @@ function Header() {
               className={`nav-item d-md-flex justify-content-md-center ${styles["wrapper-button"]}`}>
               <Image
                 src={!image ? pictDefault : photo}
-                onError={() => setPhotoState(pictDefault)}
+                onError={() => pictDefault}
                 placeholder="blur"
                 blurDataURL={pictDefault}
                 alt="photo-profile"
