@@ -107,8 +107,7 @@
 }
 
 .deposite {
-  /* background: #6379f4; */
-  background: linear-gradient(180deg, #4927f2 0%, #444ab1 100%);
+  background-color: #6379f4;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   padding: 20px;
@@ -116,8 +115,7 @@
 
 .main-wrapper-btn {
   padding: 20px;
-  /* background: #6379f4; */
-  background: linear-gradient(180deg, #4927f2 0%, #444ab1 100%);
+  background-color: #6379f4;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }

@@ -20,45 +20,49 @@ function CardHistory(props) {
     .replace(/(\.|,)00$/g, "");
   console.log(type);
   return (
-    <div className={`row ${styles["wrapper-card"]}`}>
-      <div className={`col-lg-8 `}>
-        <div className="row ">
-          <div className="col-lg-4 p-2 d-flex justify-content-center">
-            <Image
-              src={!checkPhoto ? photoDefault : photoState}
-              placeholder="blur"
-              blurDataURL={photoDefault}
-              onError={() => setPhoto(photoDefault)}
-              // src={!checkPhoto ? photoDefault : photo}
-              objectFit="cover"
-              alt="photo user"
-              className={styles["img-user"]}
-              width={90}
-              height={90}
-            />
+    <>
+      {status === "pending" ? null : (
+        <div className={`row ${styles["wrapper-card"]}`}>
+          <div className={`col-lg-8 `}>
+            <div className="row ">
+              <div className="col-lg-4 p-2 d-flex justify-content-center">
+                <Image
+                  src={!checkPhoto ? photoDefault : photoState}
+                  placeholder="blur"
+                  blurDataURL={photoDefault}
+                  onError={() => setPhoto(photoDefault)}
+                  // src={!checkPhoto ? photoDefault : photo}
+                  objectFit="cover"
+                  alt="photo user"
+                  className={styles["img-user"]}
+                  width={90}
+                  height={90}
+                />
+              </div>
+              <div className="col-lg-8 d-flex flex-column  justify-content-around">
+                <p
+                  className={
+                    styles.name
+                  }>{`${props.history.firstName} ${props.history.lastName}`}</p>
+                <p className={styles.status}>{props.history.type}</p>
+              </div>
+            </div>
           </div>
-          <div className="col-lg-8 d-flex flex-column  justify-content-around">
+          <div
+            className={`col-lg-4 d-flex align-items-center justify-content-end p-0 m-0`}>
             <p
               className={
-                styles.name
-              }>{`${props.history.firstName} ${props.history.lastName}`}</p>
-            <p className={styles.status}>{props.history.type}</p>
+                type == "send" || status == "pending"
+                  ? styles["amount-out"]
+                  : styles["amount-in"]
+              }>
+              {type == "send" ? "-" : "+"}
+              {formatAmount}
+            </p>
           </div>
         </div>
-      </div>
-      <div
-        className={`col-lg-4 d-flex align-items-center justify-content-end p-0 m-0`}>
-        <p
-          className={
-            type == "send" || status == "pending"
-              ? styles["amount-out"]
-              : styles["amount-in"]
-          }>
-          {type == "send" ? "-" : "+"}
-          {formatAmount}
-        </p>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

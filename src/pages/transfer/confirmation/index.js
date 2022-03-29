@@ -76,6 +76,16 @@ function ConfirmationTransfer() {
     setPin(e.target.value);
   };
 
+  const handleCloseModal = () => {
+    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+    myModal.hide();
+    // document.getElementById("exampleModal").classList.remove("modal-open");
+    // document.getElementById("exampleModal").style.display = "none";
+    // document
+    //   .querySelectorAll(".modal-backdrop")
+    //   .forEach((el) => el.classList.remove("modal-backdrop"));
+  };
+
   const handleContinue = () => {
     checkPinApi(pin, token)
       .then((res) => {
@@ -91,14 +101,16 @@ function ConfirmationTransfer() {
           amount: transferDetail.balance,
           notes: transferDetail.note
         };
-        transferApi(token, body)
-          .then((res) => {
-            dispatch(updateUserAction(myId, token));
-            router.push("/transfer/success");
-          })
-          .catch((err) => {
-            if (err) router.push("/transfer/failed");
-          });
+
+        handleCloseModal();
+        // transferApi(token, body)
+        //   .then((res) => {
+        //     dispatch(updateUserAction(myId, token));
+        //     router.push("/transfer/success");
+        //   })
+        //   .catch((err) => {
+        //     if (err) router.push("/transfer/failed");
+        //   });
       })
       .catch((err) => {
         alert.fire({

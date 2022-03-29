@@ -26,6 +26,7 @@ function Transfer() {
     const params = "?limit=4";
     getAllUserAPi(token, params)
       .then((res) => {
+        console.log("RECEIVER USER >>> ", res.data.data);
         setAllUser(res.data.data);
         setLoading(false);
       })

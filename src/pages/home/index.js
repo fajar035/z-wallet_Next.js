@@ -34,6 +34,7 @@ function Home() {
     setLoading(true);
     getHistoryHomeApi(token)
       .then((res) => {
+        console.log("HISTORY", res.data.data);
         setHistory(res.data.data);
         setLoading(false);
       })

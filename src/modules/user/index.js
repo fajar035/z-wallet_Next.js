@@ -15,7 +15,8 @@ export const getAllUserAPi = (token, params) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
-  return axios.get(url.concat(params), config);
+  // return axios.get(url.concat(params), config);
+  return axios.get(url, config);
 };
 
 export const updatePinApi = (id, token, dataPin) => {

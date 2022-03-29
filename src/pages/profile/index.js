@@ -141,6 +141,7 @@ function Profile(props) {
                           height={70}
                           className={styles["img-profile"]}
                           objectFit="cover"
+                          alt="photo-user"
                         />
                         <input
                           type="file"
